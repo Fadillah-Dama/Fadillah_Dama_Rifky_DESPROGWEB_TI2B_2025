@@ -1,0 +1,215 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;    
+    padding: 0;       
+    background-color: #dee2e6;
+}
+
+#header {
+    background-color: #f8f9fa;
+    color: #212529;
+    text-align: center; 
+    padding: 15px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Kontainer utama */
+#container {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    padding-right: 60px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#container-history {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    background: #f8f9fa;
+    padding: 20px;
+    padding-right: 60px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#tampilHistory {
+    background-color: #212529;
+    color: white;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#tampilHistory:hover {
+    background-color: #848484;
+}
+
+#tampilForm {
+    background-color: #212529;
+    color: white;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#tampilForm:hover {
+    background-color: #848484;
+}
+
+/* Style form dan elemen di dalamnya */
+form input[type="text"]{
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;        /* Supaya turun ke baris baru */
+    margin-top: 15px;      /* Jarak atas */
+    font-weight: bold;     /* Supaya lebih jelas */
+}
+
+form button {
+    background-color: #212529;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #848484;
+}
+
+.popup-bg {
+    position: fixed;          
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;                 
+    display: flex;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    z-index: 999;
+    display: none;
+}
+
+.popup-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.popup-box h3 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.popup-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+#save-button {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+#cancel-button {
+    background-color: #ced4da;
+    color: #343a40;
+}
+
+#save-button, #cancel-button {
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#save-button:hover {
+    background-color: #ced4da;
+}
+
+#cancel-button:hover {
+    background-color: #adb5bd;
+}
+
+#button-delete {
+    color: white;
+    background-color: #495057;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#button-delete:hover {
+    background-color: #212529;
+}
+
+#button-edit {
+    color: white;
+    background-color: #495057;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#button-edit:hover {
+    background-color: #212529;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-action button {
+    margin-left: 8px;
+}
+
+.button-action input[type="checkbox"] {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+
+}
+
+/* .task-done {
+    text-decoration: line-through;
+} */
+
+.task-done {
+    opacity: 70%;
+}
+
+
+
+

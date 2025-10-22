@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-Do List</title>
+        <link rel="stylesheet" href="jquery-ui-1.14.1/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>"> -->
+    </head>
+    <body>
+        <div id="header">
+            <h1>Simple To-Do List</h1>
+        </div>
+    
+        <div id="wrapper">
+            <div id="container">
+                <button id="tampilForm">+ Add Task</button>
+
+                <form method="post" id="form" autocomplete="off">
+                    <label for="judul">Masukkan judul tugas:</label>
+                    <input type="text" id="judul" name="judul" placeholder="Masukkan judul tugas....">
+
+                    <label for="deadline">Masukkan deadline:</label>
+                    <input type="text" id="deadline" name="deadline" placeholder="Masukkan deadline....">
+
+                    <label for="catatan">Masukkan catatan:</label>
+                    <input type="text" id="catatan" name="catatan" placeholder="Masukkan catatan....">
+                    
+                    <button type="submit">Add</button>
+                </form>
+                 <!-- result -->
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div id="container-history">
+            <button id="tampilHistory">Show  History</button>
+            <div id="history"></div>
+        </div>
+
+        <!-- popup form edit -->
+        <div class="popup-bg" id="popupForm">
+            <div class="popup-box" id="popup-box">
+                <h3>Edit Data</h3>
+                <form id="editForm" autocomplete="off">
+                    <label for="editJudul">Edit judul tugas:</label>
+                    <input type="text" id="editJudul" name="editJudul" placeholder="Edit judul tugas....">
+
+                    <label for="editDeadline">Edit deadline:</label>
+                    <input type="text" id="editDeadline" name="editDeadline" placeholder="Edit deadline....">
+
+                    <label for="editCatatan">Edit catatan:</label>
+                    <input type="text" id="editCatatan" name="editCatatan" placeholder="Edit catatan....">
+
+                    <div class="popup-button">
+                        <button type="button" id="cancel-button">Cancel</button>
+                        <button type="submit" id="save-button">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <script src="jquery-3.7.1.js"></script>
+        <script src="jquery-ui-1.14.1/jquery-ui.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
