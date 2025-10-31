@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form untuk HTML Aman</title>
+    </head>
+    <body>
+        <h2>Test HTML Injection</h2>
+        <form action="html_aman.php" method="post">
+            <label for="input">Input:</label>
+            <input type="text" id="input" name="input" size="50">
+            <input type="submit" value="Kirim">
+        </form>
+        <p>Coba masukkan: <strong>&lt;script&gt;alert('hacked');&lt;
+            /script&gt;</strong></p>
+    </body>
+</html>
