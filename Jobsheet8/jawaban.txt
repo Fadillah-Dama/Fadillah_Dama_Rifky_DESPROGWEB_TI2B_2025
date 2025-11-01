@@ -1,0 +1,104 @@
+Pertanyaan No. 1: Amati yang terjadi dan catat pemahaman Anda. (Setelah menjalankan `form_upload.php` dan submit file tanpa folder `uploads`)
+Jawaban: Akan muncul pesan error "Warning: move_uploaded_file(uploads/...): failed to open stream: No such file or directory in C:\...\upload.php on line..." dan "Warning: move_uploaded_file(): Unable to move 'C:\...\tmp\...' to 'uploads/...' in C:\...\upload.php on line..." diikuti pesan "Gagal mengunggah file.". Hal ini terjadi karena direktori `uploads` sebagai tujuan pemindahan file belum ada, sehingga file gagal dipindahkan.
+
+Pertanyaan No. 2: Amati yang terjadi dan catat pemahaman Anda. (Setelah membuat folder `uploads` dan upload file)
+Jawaban: Akan muncul pesan "File berhasil diunggah.". File yang diunggah akan tersimpan di dalam direktori `uploads` yang telah dibuat.
+
+Pertanyaan No. 3: Amati yang terjadi dan catat pemahaman Anda. (Upload file .pdf atau .docx dengan validasi ekstensi gambar)
+Jawaban: Akan muncul pesan "File tidak valid atau melebihi ukuran maksimum yang diizinkan". Ini karena script `upload(v2).php` melakukan validasi ekstensi file, dan hanya mengizinkan file dengan ekstensi "jpg", "jpeg", "png", atau "gif".
+
+Pertanyaan No. 4: Amati yang terjadi dan catat pemahaman Anda. (Upload file gambar)
+Jawaban: Akan muncul pesan "File berhasil diunggah.". File gambar yang diunggah akan tersimpan di dalam direktori `uploads`.
+
+Pertanyaan No. 5: Screenshoot tambahan kode. Jelaskan pemahaman Anda setelah penambahan kode program tersebut. (Menampilkan thumbnail)
+Jawaban:
+Tambahan kode pada `upload(v3).php`:
+```php
+echo "File berhasil diunggah.<br>";
+echo "<h3>Thumbnail:</h3>";
+echo "<img src='$targetfile' width='200'>";
+```
+Setelah file berhasil diunggah, kode di atas akan menampilkan gambar yang baru diunggah sebagai thumbnail dengan lebar 200 piksel. Ini berguna untuk memberikan preview langsung kepada pengguna.
+
+Pertanyaan No. 6: Amati yang terjadi dan catat pemahaman Anda. (Upload file > 5MB dengan validasi dokumen)
+Jawaban: Akan muncul pesan "File tidak valid atau melebihi ukuran maksimum yang diizinkan". Ini karena script `upload(v4).php` membatasi ukuran file maksimal 5MB.
+
+Pertanyaan No. 7: Amati yang terjadi dan catat pemahaman Anda. (Upload file < 3MB dengan validasi dokumen)
+Jawaban: Akan muncul pesan "File berhasil diunggah". File dokumen yang diunggah akan tersimpan di dalam direktori `uploads`.
+
+Pertanyaan No. 8: Apa yang anda pahami dari script pada file tersebut? Catat pemahaman anda. (`form_multiupload.php` dan `proses_upload.php`)
+Jawaban: Script `form_multiupload.php` membuat form HTML yang memungkinkan pengguna memilih banyak file sekaligus (karena ada atribut `multiple`). Script `proses_upload.php` kemudian akan memproses file-file yang diunggah. Script ini akan melooping semua file yang dipilih dan memindahkannya satu per satu ke direktori `documents`.
+
+Pertanyaan No. 9: Buat seperti langkah 3 dengan multi upload khusus gambar. Screen shoot perubahan kode dan berikan penjelasan kode tersebut.
+Jawaban:
+Perubahan kode pada `proses_upload(v2).php`:
+```php
+$allowedExtensions = array("jpg", "jpeg", "png", "gif");
+if (in_array($fileType, $allowedExtensions)) {
+    // Pindahkan file
+} else {
+    // Tampilkan error
+}
+```
+Script `proses_upload(v2).php` dimodifikasi untuk menangani upload banyak gambar. Setiap file yang diunggah akan divalidasi ekstensinya. Hanya file dengan ekstensi "jpg", "jpeg", "png", dan "gif" yang akan diterima dan disimpan di direktori `uploads`.
+
+Pertanyaan No. 10: Amati apa yang terjadi dan jelaskan pemahaman anda. (Upload dengan AJAX)
+Jawaban: Saat file diunggah, halaman tidak akan me-refresh. Status unggahan (berhasil, gagal, atau error validasi) akan ditampilkan secara dinamis di bawah form pada div dengan id `status`. Ini karena proses unggah ditangani oleh AJAX di belakang layar.
+
+Pertanyaan No. 11: Ubah kode menjadi agar dapat dilakukan multi upload file khusus gambar. Screenshoot perubahan kode dan jelaskan kode tersebut.
+Jawaban:
+Perubahan pada `form_upload_ajax(v2).php`:
+```html
+<input type="file" name="files[]" id="file" multiple>
+```
+Perubahan pada `upload_ajax(v2).php`:
+```php
+foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
+    // proses validasi dan pemindahan file
+}
+```
+Form diubah untuk menerima banyak file. Script `upload_ajax(v2).php` kemudian diubah untuk melooping setiap file yang diunggah, melakukan validasi ekstensi gambar, dan memindahkannya ke direktori `uploads`. Semua proses tetap berjalan secara asynchronous dengan AJAX.
+
+Pertanyaan No. 12: Apa yang anda pahami dari kode program di atas? Catat pemahaman anda. (Menghias Upload File)
+Jawaban: Kode tersebut menambahkan CSS untuk mempercantik tampilan form upload. Tombol "Unggah" pada awalnya nonaktif dan transparan. Tombol ini baru akan aktif setelah pengguna memilih file, yang dideteksi menggunakan JavaScript. Ini meningkatkan user experience karena pengguna tidak bisa mengklik "Unggah" sebelum memilih file.
+
+Pertanyaan No. 13: Amati dan jelaskan hasil pengamatanmu (`cookiesCall.php` sebelum `cookiesCreate.php`)
+Jawaban: Akan muncul error "Notice: Undefined index: user in C:\...\cookiesCall.php on line...". Ini karena cookie 'user' belum pernah dibuat, sehingga tidak ada nilainya saat coba diakses.
+
+Pertanyaan No. 14: Amati dan jelaskan hasil yang ditampilkan (Setelah menjalankan `cookiesCreate.php` lalu `cookiesCall.php`)
+Jawaban: Akan tampil tulisan "Polinema". Ini karena `cookiesCreate.php` telah membuat cookie bernama 'user' dengan nilai "Polinema". `cookiesCall.php` kemudian berhasil membaca nilai dari cookie tersebut.
+
+Pertanyaan No. 15: Amati dan jelaskan hasil yang ditampilkan. (Setelah restart komputer)
+Jawaban: Akan tetap tampil tulisan "Polinema". Ini karena cookie yang dibuat memiliki waktu kadaluarsa (expire time) selama 1 jam (time()+3600). Selama belum melewati waktu tersebut, cookie akan tetap tersimpan di browser meskipun komputer direstart.
+
+Pertanyaan No. 16: Amati dan jelaskan hasil yang dihasilkan dari langkah 2 dan 3, kemudian beri kesimpulan. (`cookiesDel.php` lalu `cookiesCall.php`)
+Jawaban: Setelah menjalankan `cookiesDel.php`, lalu `cookiesCall.php`, akan muncul error "Notice: Undefined index: user...".
+Kesimpulan: `cookiesDel.php` menghapus cookie dengan cara mengatur waktu kadaluarsanya ke masa lalu (time()-3600). Akibatnya, browser akan langsung menghapus cookie tersebut, sehingga tidak bisa lagi diakses oleh `cookiesCall.php`.
+
+Pertanyaan No. 17: Amati dan jelaskan hasil yang ditampilkan. (`keranjangBelanja.php` sebelum `formBeli.html`)
+Jawaban: Akan muncul error "Notice: Undefined index: beliNovel..." dan "Notice: Undefined index: beliBuku...". Ini karena cookie 'beliNovel' dan 'beliBuku' belum dibuat.
+
+Pertanyaan No. 18: Amati dan jelaskan hasil yang ditampilkan. (Setelah mengisi form dan submit)
+Jawaban: Halaman `keranjangBelanja.php` akan menampilkan jumlah novel dan buku teks sesuai dengan yang diinputkan di `formBeli.html`. Contoh: "Jumlah Novel: 2<br>Jumlah Buku :3".
+
+Pertanyaan No. 19: Amati dan jelaskan hasil yang ditampilkan. (Tutup browser, buka lagi, akses `keranjangBelanja.php`)
+Jawaban: Hasilnya akan tetap sama seperti pada pertanyaan 18. Jumlah novel dan buku teks akan tetap tersimpan di cookie dan ditampilkan kembali.
+
+Pertanyaan No. 20: Amati dan jelaskan hasil yang ditampilkan. (`sessionCall.php` setelah `sessionCreate.php`)
+Jawaban: Akan tampil tulisan "Favorite color is green.<br>Favorite animal is cat.". `sessionCreate.php` memulai session dan menyimpan variabel. `sessionCall.php` kemudian mengakses session yang sama dan menampilkan nilai variabel tersebut.
+
+Pertanyaan No. 21: Amati dan jelaskan hasil yang ditampilkan. (`sessionDel.php` lalu `sessionCall.php`)
+Jawaban: Setelah menjalankan `sessionDel.php`, akan tampil pesan "All session variables are now removed, and the session is destroyed.". Kemudian saat mengakses `sessionCall.php`, akan muncul error "Notice: Undefined index: favcolor..." dan "Notice: Undefined index: favanimal...". Ini karena `session_destroy()` telah menghapus semua data session.
+
+Pertanyaan No. 22: Amati dan jelaskan hasil yang ditampilkan. (Login dengan username dan password salah)
+Jawaban: Akan tampil pesan "Gagal login. Silahkan login lagi" beserta link untuk kembali ke halaman login.
+
+Pertanyaan No. 23: Amati dan jelaskan hasil yang ditampilkan. (Login dengan username dan password benar)
+Jawaban: Akan tampil pesan "Anda berhasil login. Silahkan menuju Halaman Home". Jika link di klik, akan tampil "Selamat datang admin" dan link "Logout".
+
+Pertanyaan No. 24: Jelaskan urutan proses dari login hingga logout (sebutkan juga urutan file yang diproses)
+Jawaban:
+1.  **`sessionLoginForm.html`**: Pengguna mengisi username dan password.
+2.  **`sessionLoginProcess.php`**: Menerima data dari form. Jika username "admin" dan password "1234", maka session 'username' dan 'status' akan dibuat, lalu diarahkan ke `homeSession.php`. Jika salah, akan ditampilkan pesan error.
+3.  **`homeSession.php`**: Memeriksa apakah session 'status' adalah 'login'. Jika ya, tampilkan pesan selamat datang dan link logout. Jika tidak, tampilkan pesan untuk login.
+4.  **`sessionLogout.php`**: Jika link logout di klik, file ini akan dijalankan. `session_destroy()` akan menghapus semua data session, dan menampilkan pesan "Anda berhasil logout".
